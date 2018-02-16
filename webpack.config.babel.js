@@ -84,6 +84,7 @@ const SERVER_JS_CONFIG = {
         alias: {
             '/content-types': path.resolve(__dirname, SRC_DIR, 'site', 'content-types'),
             '/lib': path.resolve(__dirname, SRC_DIR, 'lib'),
+            '/mixins': path.resolve(__dirname, SRC_DIR, 'site', 'mixins'),
             '/services': path.resolve(__dirname, SRC_DIR, 'services'),
             '/site': path.resolve(__dirname, SRC_DIR, 'site'),
             'content-types.es': path.resolve(__dirname, SRC_DIR, 'site', 'content-types', 'content-types.es'),

@@ -22,6 +22,7 @@ import {
 //──────────────────────────────────────────────────────────────────────────────
 import {CT_MENU} from 'content-types.es';
 import {decendantOf} from '/lib/app-menu/query.es';
+import {getLinkTarget} from '/mixins/app-menu-link-target/app-menu-link-target.es';
 
 
 //──────────────────────────────────────────────────────────────────────────────
@@ -30,20 +31,23 @@ import {decendantOf} from '/lib/app-menu/query.es';
 function buildMenuItemsFromContent(content) {
     return forceArray(content.data.menuItemSet).map((item) => {
         log.info(`item:${toStr(item)}`);
-        let href = '';
+        let href = null;
         let labelText = '';
+        let target = null;
         const selected = item.linkOptionSet._selected;
         const option = item.linkOptionSet[selected];
         if (selected === 'content') {
             const itemContent = getContentByKey({key: option.content});
-            labelText = option.labelText || itemContent.displayName || '';
             href = getPageUrl({
                 id: itemContent._id,
                 type: option.type || 'server'
             });
+            labelText = option.labelText || itemContent.displayName || '';
+            target = getLinkTarget(option.linkTarget);
         } else if (selected === 'url') {
-            labelText = option.labelText || '';
             href = option.url;
+            labelText = option.labelText || '';
+            target = getLinkTarget(option.linkTarget);
         }
         return {
             href,
@@ -51,7 +55,8 @@ function buildMenuItemsFromContent(content) {
                 id: item.svgIcon,
                 type: 'server'
             }) : null,
-            labelText
+            labelText,
+            target
         };
     });
 } // function buildMenuItemsFromContent

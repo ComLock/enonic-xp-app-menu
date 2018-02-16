@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mixin>
+    <display-name>Link target mixin</display-name>
+    <items>
+        <item-set name="linkTarget">
+            <label>Link Target</label>
+            <help-text>Specifies where to display the linked URL. It is a name of, or keyword for, a browsing context: a tab, window, or &lt;iframe&gt;.</help-text>
+            <occurrences minimum="0" maximum="1"/>
+            <items>
+                <input name="targetAttribute" type="ComboBox">
+                    <label>Target attribute</label>
+                    <!--<help-text>Specifies where to display the linked URL. It is a name of, or keyword for, a browsing context: a tab, window, or &lt;iframe&gt;.</help-text>-->
+                    <occurrences minimum="0" maximum="1"/>
+                    <config>
+                        <option value="_self">_self: Load the URL into the same browsing context as the current one. This is the default behavior.</option>
+                        <option value="_blank">_blank: Load the URL into a new browsing context. This is usually a tab, but users can configure browsers to use new windows instead.</option>
+                        <option value="_parent">_parent: Load the URL into the parent browsing context of the current one. If there is no parent, this behaves the same way as _self.</option>
+                        <option value="_top">_top: Load the URL into the top-level browsing context (that is, the "highest" browsing context that is an ancestor of the current one, and has no parent). If there is no parent browsing context, this behaves the same way as _self.</option>
+                        <!--<option value="framename">framename: Load the URL into a named frame</option>-->
+                    </config>
+                    <default>_self</default>
+                </input>
+                <input name="targetFrameName" type="TextLine">
+                    <label>Target frame name (overrides target atribute)</label>
+                    <help-text>Name of frame to load the URL into. If this is filled in, target attribute will be ignored.</help-text>
+                    <occurrences minimum="0" maximum="1"/>
+                </input>
+            </items>
+        </item-set>
+    </items>
+</mixin>

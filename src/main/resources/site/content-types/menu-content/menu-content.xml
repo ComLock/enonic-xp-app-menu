@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <content-type>
     <display-name>Menu</display-name>
     <super-type>base:structured</super-type>
@@ -42,17 +42,6 @@
                                     <help-text>
                                         Prefix params with '?' and separate with &amp;. Add anchor after params, and prefix with '#'
                                     </help-text>
-                                </input>
-                                <input name="target" type="RadioButton">
-                                    <label>Target</label>
-                                    <help-text>The target attribute specifies where to open the linked document
-                                    </help-text>
-                                    <occurrences minimum="0" maximum="0"/>
-                                    <config>
-                                        <option value="_self">Same frame</option>
-                                        <option value="_blank">New window or tab</option>
-                                    </config>
-                                    <default>_self</default>
                                 </input-->
                                 <input name="type" type="RadioButton">
                                     <label>URL type</label>
@@ -64,6 +53,7 @@
                                     </config>
                                     <default>server</default>
                                 </input>
+                                <inline mixin="app-menu-link-target"/>
                                 <!--input name="class" type="TextLine">
                                     <label>Link class</label>
                                     <occurrences minimum="0" maximum="1"/>
@@ -83,18 +73,8 @@
                                     <label>Label</label>
                                     <occurrences minimum="1" maximum="1"/>
                                 </input>
-                                <!--input name="target" type="RadioButton">
-                                    <label>Target</label>
-                                    <help-text>The target attribute specifies where to open the linked document
-                                    </help-text>
-                                    <occurrences minimum="0" maximum="0"/>
-                                    <config>
-                                        <option value="_self">Same frame</option>
-                                        <option value="_blank">New window or tab</option>
-                                    </config>
-                                    <default>_self</default>
-                                </input>
-                                <input name="class" type="TextLine">
+                                <inline mixin="app-menu-link-target"/>
+                                <!--input name="class" type="TextLine">
                                     <label>Link class</label>
                                     <occurrences minimum="0" maximum="1"/>
                                     <help-text>Add a link css class</help-text>
