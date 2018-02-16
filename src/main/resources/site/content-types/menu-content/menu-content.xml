@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content-type>
+    <display-name>Menu</display-name>
+    <super-type>base:structured</super-type>
+    <is-abstract>false</is-abstract>
+    <is-final>true</is-final>
+    <allow-child-content>true</allow-child-content>
+    <form>
+        <item-set name="menuItemSet">
+            <label>Menu item</label>
+            <occurrences minimum="1" maximum="20"/>
+            <items>
+
+                <option-set name="linkOptionSet">
+                    <label>Link</label>
+                    <expanded>false</expanded>
+                    <occurrences minimum="0" maximum="1"/>
+                    <options minimum="1" maximum="1">
+
+                        <option name="content">
+                            <label>Content</label>
+                            <items>
+                                <input name="content" type="ContentSelector">
+                                    <label>Content</label>
+                                    <occurrences minimum="1" maximum="1"/>
+                                    <config>
+                                        <relationshipType>system:reference</relationshipType>
+                                        <allowPath>${site}/*</allowPath>
+                                        <treeMode>false</treeMode>
+                                        <showStatus>true</showStatus>
+                                        <hideToggleIcon>true</hideToggleIcon>
+                                    </config>
+                                </input>
+                                <input name="labelText" type="TextLine">
+                                    <label>Label (leave empty to use displayName)</label>
+                                    <help-text>(Leave empty to use displayName)</help-text>
+                                    <occurrences minimum="0" maximum="1"/>
+                                </input>
+                                <!--input name="params" type="TextLine">
+                                    <label>Url parameters (? / &amp;) or/and url anchor (#)</label>
+                                    <occurrences minimum="0" maximum="1"/>
+                                    <help-text>
+                                        Prefix params with '?' and separate with &amp;. Add anchor after params, and prefix with '#'
+                                    </help-text>
+                                </input>
+                                <input name="target" type="RadioButton">
+                                    <label>Target</label>
+                                    <help-text>The target attribute specifies where to open the linked document
+                                    </help-text>
+                                    <occurrences minimum="0" maximum="0"/>
+                                    <config>
+                                        <option value="_self">Same frame</option>
+                                        <option value="_blank">New window or tab</option>
+                                    </config>
+                                    <default>_self</default>
+                                </input-->
+                                <input name="type" type="RadioButton">
+                                    <label>URL type</label>
+                                    <help-text>URL type. Either server (server-relative URL) or absolute.</help-text>
+                                    <occurrences minimum="0" maximum="0"/>
+                                    <config>
+                                        <option value="server">server (default)</option>
+                                        <option value="absolute">absolute</option>
+                                    </config>
+                                    <default>server</default>
+                                </input>
+                                <!--input name="class" type="TextLine">
+                                    <label>Link class</label>
+                                    <occurrences minimum="0" maximum="1"/>
+                                    <help-text>Add a link css class</help-text>
+                                </input-->
+                            </items>
+                        </option><!-- content -->
+
+                        <option name="url">
+                            <label>Url</label>
+                            <items>
+                                <input name="url" type="TextLine">
+                                    <label>URL</label>
+                                    <occurrences minimum="1" maximum="1"/>
+                                </input>
+                                <input name="labelText" type="TextLine">
+                                    <label>Label</label>
+                                    <occurrences minimum="1" maximum="1"/>
+                                </input>
+                                <!--input name="target" type="RadioButton">
+                                    <label>Target</label>
+                                    <help-text>The target attribute specifies where to open the linked document
+                                    </help-text>
+                                    <occurrences minimum="0" maximum="0"/>
+                                    <config>
+                                        <option value="_self">Same frame</option>
+                                        <option value="_blank">New window or tab</option>
+                                    </config>
+                                    <default>_self</default>
+                                </input>
+                                <input name="class" type="TextLine">
+                                    <label>Link class</label>
+                                    <occurrences minimum="0" maximum="1"/>
+                                    <help-text>Add a link css class</help-text>
+                                </input-->
+                            </items>
+                        </option><!-- url -->
+
+                    </options>
+                </option-set><!-- linkOptionSet -->
+
+                <input name="svgIcon" type="ContentSelector">
+                    <label>Svg icon</label>
+                    <occurrences minimum="1" maximum="1"/>
+                    <config>
+                        <relationshipType>system:reference</relationshipType>
+                        <allowContentType>media:vector</allowContentType>
+                        <allowPath>${site}/*</allowPath>
+                        <treeMode>false</treeMode>
+                        <showStatus>true</showStatus>
+                        <hideToggleIcon>true</hideToggleIcon>
+                    </config>
+                </input><!-- svgIcon -->
+
+            </items>
+        </item-set><!-- menuItemSet -->
+    </form>
+</content-type>

@@ -1,3 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
+
+    <config>
+        <input name="menuContent" type="ContentSelector">
+            <label>Menu content</label>
+            <occurrences minimum="0" maximum="1"/>
+            <config>
+                <allowType>menu-content</allowType>
+                <allowPath>${site}/*</allowPath>
+            </config>
+        </input>
+    </config>
+
+    <filters>
+        <!--response-filter name="app-menu-init-page-contributions-filter" order="0"/-->
+        <response-filter name="app-menu-filter" order="10"/>
+    </filters>
+
 </site>
